@@ -1,0 +1,50 @@
+{% extends "cliente/base_generica.html" %}
+{% block content %}
+{% load humanize %}
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h2 class="mb-0"> Detalle
+                        <a href="{% url 'ordenes' %}" class="btn btn-warning float-end text-black">Volver</a>
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Comprado</h4>
+                            <hr>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th>Numero Seguimiento</th>
+                                        <th>Precio unitario del producto</th>
+                                        <th>Cantidad del producto comprado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for o in orden_producto %}
+                                    <tr>
+                                        <th>{{o.data.0}}</th>
+                                        <th>{{o.data.1}}</th>
+                                        <th>{{o.data.2 | intcomma}}</th>
+                                        <th>{{o.data.3}}</th>
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br><br><br>
+
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "cliente/base_generica.html" %}
+
+{% block content %}
+{%load static%}
+
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h2> Mis ordenes</h2>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Id de la Orden</th>
+                                <th>Monto total</th>
+                                <th>Subtotal (Sin Iva)</th>
+                                <th>Tipo de pago</th>
+                                <th>Id de pago</th>
+                                <th>Seguimiento</th>
+                                <th>Creado</th>
+                                <th>Ver</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {%for u in entity%}
+                                <tr>
+                                    <td>{{u.data.0}}</td>
+                                    <td>${{u.data.2}}</td>
+                                    <td>${{u.data.3}}</td>
+                                    <td>{{u.data.4}}</td>
+                                    <td>{{u.data.5}}</td>
+                                    <td>{{u.data.7}}</td>
+                                    <td>{{u.data.8}}</td>
+                                    <td>
+                                        <a href="{% url 'orden_detalle' u.data.0 %}">Detalles</a>
+                                    </td>
+                                    
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="paginator">
+    {% include 'cliente/paginator.html' %}
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{%endblock%}

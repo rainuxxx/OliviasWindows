@@ -1,0 +1,65 @@
+{% extends "cliente/base_generica.html" %}
+{% block content %}
+
+<div class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card shadow">
+                    <div class="card-body datocarro">
+                        {% load humanize %}
+                        {% if carrito %}
+                            {% for item in carrito %}
+                            <div class="row product_data">
+                                <div class="col-md-3 my-auto">
+                                    <h6>{{item.producto.nombre }} </h6>
+                                </div>
+                                <div class="col-md-2 my-auto">
+                                    <h6> ${{item.producto.precio | intcomma }}</h6>
+                                </div>   
+                                <div class="col-md-3 my-auto">
+                                    <input type="hidden" class="prod_id" value="{{item.producto.id}}">
+                                    {% csrf_token %}
+                                    {% if item.producto.cantidad >= item.cantidad %}
+                                        <label for="Quantity"> stock</label>
+                                        <div class="input-group text-center mb-3" style="width:130px;">
+                                            <button class="input-group-text changeQuantity decrement-btn">-</button>
+                                            <input type="text" name="quantity" class="form-control qty-input text-center" value="{{item.cantidad}}">
+                                            <button class="input-group-text changeQuantity increment-btn">+</button>
+                                        </div>
+                                    {% else %}
+                                        <h6> Fuera de Stock </h6>
+                                    {% endif %}
+
+                                </div>
+                                
+                                <div class="col-md-2 my-auto">
+                                    <button class="btn btn-danger delete-cart-item"> Eliminar </button>
+                                </div>
+                            </div>
+                            <hr>
+                            {% endfor %}
+                            <a href= "{% url 'compra' %}" class="btn btn-outline-success float-end">Comprar</a>
+                        {% else %}
+                            <h6> No se encuentra ningun articulo en el carro </h6>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+   
+{% endblock content %}

@@ -1,0 +1,120 @@
+{% extends 'cliente/base_generica.html' %}
+{% load static %}
+{% block content %}
+<br>
+<br>
+
+    <div class="row" >
+        <div class="col-2">
+
+        </div>
+            <div class="col-8" style="border:1px solid rgb(245, 118, 161);border-radius: 20px">
+                <div style="text-align:center">
+                    <a href="/"><img src="{% static 'assets/img/logo.png'%}"></a>
+                </div>
+                <h2>Agregar nuevo producto</h2><br>
+                <form class="required-validation" novalidate action="#" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="pay" for="">Nombre</label>
+                        <input class="form-control" type="text" name="nombre_producto"
+                            placeholder="Ingresa el nombre del producto">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label class="pay" for="">Codigo de barra</label>
+                        <input class="form-control" type="number" name="sku" placeholder="Codigo de barra">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label class="pay" for="">Precio</label>
+                        <input class="form-control" type="number" name="precio" placeholder="Precio del producto">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label class="pay" for="">Stock</label>
+                        <input class="form-control" type="number" name="stock" placeholder="Stock del producto">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label class="pay" for="">Categoría</label>
+                        <select class="form-control" name="categoria">
+                            <option value="">Seleccionar</option>
+                            {% for c in categoria %}
+                                <option value="{{ c.data.0 }}">{{ c.data.1 }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label class="pay" for="">Estado</label>
+                        <select class="form-control" name="estado">
+                            <option value="0">Deshabilitado</option>
+                            <option value="1">Habilitado</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label class="pay" for="">Imagen</label>
+                        <label for="imageUpload" class="btn btn-primary btn-block btn-outlined">Seleccionar imagenes</label>
+                        <input type="file" id="imageUpload" name="imagen" accept="image/*" style="display: none">
+                    </div>
+                    <br>
+                    <div style="text-align:center">
+                        <button type="submit" class="btn btn-primary "
+                            value="Guardar">Guardar</button>
+                    </div><br><br>
+                    
+                </form>
+                
+            </div>
+            {% if messages %}
+        <div class="d-flex justify-content-center">
+            
+                <div class="col-4">
+                {% for message in messages %}
+                <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                    </symbol>
+                    <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                    </symbol>
+                    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                    </symbol>
+                </svg>
+                    {% if message.extra_tags %}
+                    <div class="alert alert-primary d-flex align-items-center" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+                        <div>
+                            {{ message }}
+                        </div>
+                    </div>
+                        
+                        
+                    {% else %}
+                    <div class="alert alert-primary d-flex align-items-center" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+                        <div>
+                            {{ message }}
+                        </div>
+                    </div>
+                        
+                {% endif %}
+                    
+                {% endfor %}
+                </div>
+            
+        </div>
+        {% endif %}
+            
+        
+    </div>
+    <br>
+    <br>
+    <br>
+
+
+
+    {% endblock %}

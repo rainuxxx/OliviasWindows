@@ -1,0 +1,53 @@
+{% extends "cliente/base_generica.html" %}
+
+{% block content %}
+{% load static %}
+{% load humanize %}
+<div class="row" >
+    <div class="col-2"></div>
+    <div class="col-6" style="border:solid">
+        {% for o in entity %}
+
+        <p>ID de la orden: {{o.data.0}} </p>
+        <p>ID del usuario: {{o.data.1}}</p>
+        <p>Total: ${{o.data.2 | intcomma }}</p>
+        <p>Sub total: ${{o.data.3 | intcomma}} </p>
+        <p>Tipo de pago: {{o.data.4}}</p>
+        <p>ID del pago: {{o.data.5}}</p>
+        <p>Estado: {{o.data.6}}</p>
+        <p>Seguimiento: {{o.data.7}}</p>
+        <p>Fecha de compra: {{o.data.8}}</p>
+        <p>Actualizado: {{o.data.9}}</p>
+        <a href="{% url 'ventas_detalle' o.data.0 %}">Detalles</a><br> 
+        <p>----------</p>
+
+        {% endfor %}
+    </div>
+    <div class="col-4"></div>
+    <div class="paginator">
+        {% include 'cliente/paginator.html' %}
+    </div>
+</div>
+
+
+<!-- {% for o in entity %}
+
+{{o.data.0}} <br>
+{{o.data.1}} <br>
+{{o.data.2}} <br>
+{{o.data.3}} <br>
+{{o.data.4}} <br>
+{{o.data.5}} <br>
+{{o.data.6}} <br>
+{{o.data.7}} <a href="{% url 'ventas_detalle' o.data.0 %}">Detalles</a><br> 
+{{o.data.8}} <br>
+{{o.data.9}} <br>
+<p>-------------------------</p>
+
+{% endfor %}
+
+<div class="paginator">
+    {% include 'cliente/paginator.html' %}
+</div> -->
+
+{%endblock%}

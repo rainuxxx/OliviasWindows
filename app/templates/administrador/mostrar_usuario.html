@@ -1,0 +1,36 @@
+{% extends "cliente/base_generica.html" %}
+{% load static %}
+{% block content %}
+    <div>
+        
+        <h2>Usuarios</h2>
+        <table class="default">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+            </tr>
+            {% for u in entity %}
+                <tr>
+                    <td>{{ u.data.0 }}</td>
+                    <td>{{ u.data.4 }}</td>
+                    <td><a href="/administrador/modificar_usuario/{{u.data.7}}" class="btn btn-sm btn-edit" style="float: center;">Editar</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <label for="">ID</label>
+            <input type="number" name="id_usuario">
+            <br>
+            <input type="submit" value="Eliminar">
+        </form>
+        {{mensaje}}
+    </div>
+    <div class="paginator">
+        {% include 'cliente/paginator.html' %}
+    </div>
+
+    {%endblock%}

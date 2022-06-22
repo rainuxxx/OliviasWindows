@@ -1,0 +1,50 @@
+{% extends "cliente/base_generica.html" %}
+{% load static %}
+{% block content %}
+<br><br>
+<div style="text-align:center">
+    <h1>Productos</h1>
+</div><br> <br><br>
+<div class= "container">
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                    {% for p in entity %}
+                    {% if p.imagen %}
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body" style="height:250px">
+                                <img class="category-image" style="width: 100%;height: 100%;"src="data:imagen/png;base64, {{p.imagen}}">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="text-center">{{ p.data.1 }}</h4>
+                                <hr>
+                                <span class="float-start"> ${{ p.data.2 }}</span>
+                                <span class="float-end"> Stock: {{ p.data.3 }}</span>
+                            
+                            </div>
+                            <div class="card-body">
+                                {% if request.session.usuario.tipo == 3 %}
+                                    <div>
+                                        <i class="bi-cart-fill me-1">
+                                            <a type="submit" class="btn btn-success w-100" href="{% url 'cotizacion' p.data.0 %}">Detalle del Producto </a>
+                                        </i>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+
+                </div>
+                {% endif %}
+        {% endfor %}
+        <div class="paginator">
+            {% include 'cliente/paginator.html' %}
+        </div>
+    </div>
+</div>
+<br>
+{% endblock %}

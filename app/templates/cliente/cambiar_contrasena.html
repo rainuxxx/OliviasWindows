@@ -1,0 +1,37 @@
+{% extends "cliente/base_generica.html" %}
+
+{% block content %}
+{%load static%}
+    
+
+<br><br>
+    <div class="row">
+        <div class="col-4">
+
+        </div>
+        <div class="col-4" style="border:1px solid rgb(245, 118, 161);border-radius: 20px">
+
+            <h2 >Cambia tu contraseña</h2><br><br>
+            <table>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="">Ingrese la nueva contraseña</label><br><br>
+                    <input class="form-control" type="password" name="contrasena_nueva" >
+                    </div>
+                    <br>
+                    <div style="text-align:center">
+                        <input class="btn btn-primary" type="submit" value="Cambiar">
+                    </div>
+                  
+                </form>
+            </table>
+        </div>
+        <div class="col-4">
+            
+        </div>
+        
+    </div>
+    <br><br><br><br>
+
+{%endblock%}

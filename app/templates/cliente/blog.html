@@ -1,0 +1,49 @@
+{% extends "cliente/base_generica.html" %}
+
+{% block content %}
+{%load static%}
+
+<br><br>
+
+
+<div class="row">
+    <div class="col-2">
+
+    </div>
+    <div class="col-8" style="border:1px solid rgb(245, 118, 161);border-radius: 20px">
+        <h2>Agregar calificación</h2><br>
+        <form class="required-validation" novalidate action="#" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label class="pay" for="">titulo</label>
+                <input class="form-control" type="text" name="titulo" placeholder="Ingresa el nombre del producto">
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <label class="pay" for="">Cuerpo</label>
+                <input class="form-control" type="text" name="cuerpo" placeholder="Ingresa el nombre del producto">
+            </div>
+            <div hidden class="form-group">
+                <input class="form-control" type="number" name="usuario" value="{{ request.session.usuario.id }}">
+            </div>
+            <br>
+            <div style="text-align:center">
+                <button type="submit" class="btn btn-primary " value="Guardar">Guardar</button>
+            </div><br><br>
+
+        </form>
+        {{mensaje}}
+    </div>
+    <div class="col-2">
+
+
+
+    </div>
+</div>
+
+
+
+
+
+{%endblock%}

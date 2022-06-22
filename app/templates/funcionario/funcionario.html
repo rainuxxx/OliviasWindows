@@ -1,0 +1,43 @@
+{% extends 'cliente/base_generica.html' %}
+{% load static %}
+{% block content %}
+<br>
+    <div class="container">
+        <h1 style="text-align:center" >Menú de opciones</h1> <br>
+        <div class="row">
+            <div class="col-6">
+
+                    <img style="border-radius:5%"width="100%" src="{% static 'assets/funcionario/pastelChocolate.jpg'%}">
+                    <div style="text-align:center;margin-top: 10px;">
+                        <a class="btn btn-danger" href="{% url 'nuevo_producto' %}">Agregar producto</a>
+                    </div>
+            </div><br>
+            <div class="col-6">
+
+                    <img style="border-radius:5%"width="100%" src="{% static 'assets/funcionario/pastelypan.jpg'%}">
+                    <div style="text-align:center;margin-top: 10px;">
+                        <a class="btn btn-danger" href="{% url 'nueva_categoria' %}">Agregar categoría</a>
+                    </div>
+
+
+            </div>
+        </div><br><br><br>
+        <div class="row">
+            
+            <div class="col-6">
+                    <img style="border-radius:5%" width="100%" src="{% static 'assets/funcionario/panHd.jpg'%}">
+                    <div style="text-align:center;margin-top: 10px;">
+                        <a class="btn btn-danger"  href="{% url 'mostrar_producto' %}">Mostrar productos actuales</a>
+                      </div>
+            </div>
+            <div class="col-6">
+                <img style="border-radius:5%"width="100%" src="{% static 'assets/funcionario/categoriaPan.jpg'%}">
+                <div style="text-align:center;margin-top: 10px;">
+                    <a class="btn btn-danger" href="{% url 'mostrar_categoria' %}">Mostrar categorías actuales</a>
+                </div>
+        </div><br>
+        </div>
+    </div><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+
+{% endblock content %}

@@ -1,0 +1,43 @@
+{% extends "cliente/base_generica.html" %}
+{% load static %}
+{% block content %}
+<br><br>
+<div style="text-align:center">
+    <h1>Productos</h1>
+</div><br> <br><br>
+<div class="row">
+    {% for p in entity %}
+    
+    <div class="col-4 ">
+        <div class="card" style="height:500px;">
+            <div class="card-header" style="height:250px">
+                <img class="card-img-top" style="width: 100%;height: 100%;"src="data:imagen/png;base64, {{p.imagen}}">
+            </div>
+            <div class="card-body" style="height:250px">
+                <h5>Nombre: {{ p.data.1 }}</h5>
+                <p>Precio: ${{ p.data.2 }}</p>
+                <p>Stock: {{ p.data.3 }}</p>
+                <p>ID: {{ p.data.0 }}</p>
+                <a href="/funcionario/modificar_producto/{{p.data.0}}" class="btn btn-sm btn-edit"
+                    style="float: center;">Editar</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+
+<div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="">ID</label>
+        <input type="number" name="id_producto">
+        <br>
+        <input type="submit" value="Eliminar">
+    </form>
+    {{mensaje}}
+</div>
+<div class="paginator">
+    {% include 'cliente/paginator.html' %}
+  </div>
+{% endblock %}

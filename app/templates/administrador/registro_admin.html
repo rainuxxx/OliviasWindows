@@ -1,0 +1,103 @@
+{% extends "cliente/base_generica.html" %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Registro</title>
+    {%load static%}
+</head>
+<body >
+    <div style= "background-image: url({% static 'assets/cliente/registroBackground.jpg'%});background-size::cue">
+        <br><br><br>
+        <div class="row">
+            <div class="col-4">
+    
+            </div><br>
+            <div class="col-4" style="opacity:1.5">
+                <div style="text-align:center">
+                    <a href="/"><img src="{% static 'assets/img/logo.png'%}"></a>
+                </div>
+                <div class="registration-form ">
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <div class="form-icon">
+                            <span><i class="icon icon-user"></i></span>
+    
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 text-center mb-5">
+                                <h1 class="heading-section" style="color: #050505">Registro de usuario</h1>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control item" name="primer_nombre" placeholder="Primer nombre"
+                                required>
+                        </div><br>
+                        <div class="form-group">
+                            <input type="text" class="form-control item" name="segundo_nombre" placeholder="Segundo nombre">
+                        </div><br>
+                        <div class="form-group">
+                            <input type="text" class="form-control item" name="apellido_paterno" placeholder="Apellido paterno" required>
+                        </div><br>
+                        <div class="form-group">
+                            <input type="text" class="form-control item" name="apellido_materno" placeholder="Apellido materno" required>
+                        </div><br>
+                        <div class="form-group">
+                            <input type="text" class="form-control item" name="direccion" placeholder="Direccion" required>
+                        </div><br>
+                        <div class="form-group">
+                            <input type="number" class="form-control item" name="telefono" placeholder="Telefono" required>
+                        </div><br>
+                        <div class="form-group">
+                            <input type="email" class="form-control item" name="correo" placeholder="Correo electronico" required>
+                        </div><br>
+                        <div class="form-group">
+                            <select class="form-control item" name="tipo_usuario" required>
+                                <option value="">Tipo de usuario</option>
+                                {% for t in tipo %}
+                                    <option value="{{t.data.0}}">{{t.data.1}}</option>
+                                {% endfor %}
+                            </select>
+                        </div><br>
+                        <div class="form-group">
+                            <select class="form-control item" name="comuna" required>
+                                <option value="">Comuna</option>
+                                {% for c in comuna %}
+                                    <option value="{{c.data.0}}">{{c.data.1}}</option>
+                                {% endfor %}
+                            </select>
+                        </div><br>
+                        <div class="form-group">
+                            <input type="password" class="form-control item" name="contrasena" placeholder="Contraseña"
+                                required>
+                        </div><br>
+                        <div class="form-group">
+                            <input type="password" class="form-control item" name="contrasena2" placeholder="Repetir contraseña"
+                                required>
+                        </div><br><br>
+                        <div class="form-group" style="text-align:center">
+                            <button type="submit" class="btn btn-danger create-account">Crear cuenta</button>
+                        </div>
+                    </form>
+                </div>
+    
+                {{mensaje}}
+            </div>
+    
+        </div>
+        <div class="col-4">
+    
+        </div>
+        <br><br><br><br>
+    </div>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "cliente/base_generica.html" %}
+{% block content %}
+{% load humanize %}
+<div class="row" >
+    <div class="col-2"></div>
+    <div class="col-6" style="border:solid">
+        {% for v in venta %}
+
+        <p>Nombre del producto: {{v.data.0}} </p>
+        <p>Numero de seguimiento: {{v.data.1}}</p>
+        <p>Precio de la orden del producto: {{v.data.2 | intcomma }}</p>
+        <p>Cantidad del producto comprado: {{v.data.3}} </p>
+        <p>----------</p>
+
+        {% endfor %}
+    </div>
+    <div class="col-4"></div>
+</div>
+
+
+{% endblock %}

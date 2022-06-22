@@ -1,0 +1,58 @@
+{% extends "cliente/base_generica.html" %}
+{% load static %}
+{% block content %}
+<br><br>
+<div class="row">
+    <div class="col-3">
+
+    </div>
+    <div class="col-6" style="border:1px solid rgb(245, 118, 161);border-radius: 20px">
+        <h2>Formulario de contacto</h2>
+        <form method="post" action="/correo-contacto">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="nombre">Nombres</label>
+                <input type="text" class="form-control" name="nombres" placeholder="Ingrese sus nombres.." required>
+            </div><br>
+            <div class="form-group">
+                <label for="apellido">Apellidos</label>
+                <input type="text" class="form-control" name="apellidos" placeholder="Ingrese sus apellidos.." required>
+            </div><br>
+            <div class="form-group">
+                <label for="correo">Correo Electrónico</label>
+                <input type="text" class="form-control" name="correo" placeholder="Ingrese su correo.." required>
+            </div><br>
+            <div class="form-group">
+                <label for="asunto">Asunto</label><br>
+                <select class="form-control" name="asunto" required>
+                    <option value="">Seleccionar..</option>
+                    <option value="Servicio al cliente">Servicio al cliente</option>
+                    <option value="Servicio de ventas">Servicio de ventas</option>
+                    <option value="Servicio post-ventas">Servicio post-ventas</option>
+                    <option value="Reclamos">Reclamos</option>
+                    <option value="Sugerencias">Sugerencias</option>
+                </select>
+            </div><br>
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <input type="text" class="form-control" name="descripcion" placeholder=".." required>
+            </div><br>
+            <div class="form-group" style="text-align:center">
+                <button class="btn btn-primary">Enviar formulario</button>
+            </div><br>
+
+
+
+        </form>
+    </div>
+    <div class="col-3">
+
+    </div>
+</div><br><br>
+
+
+
+
+
+{%endblock%}

@@ -1,0 +1,64 @@
+{% extends "cliente/base_generica.html" %}
+{%load static%}
+{% block content %}
+<br><br>
+<div class="row">
+  <div class="col-2">
+
+  </div>
+  <div class="col-8" style="border:1px solid rgb(245, 118, 161);border-radius: 20px">
+    <div style="text-align:center">
+      <a href="/"><img src="{% static 'assets/img/logo.png'%}"></a>
+    </div>
+    <h2 >Categorías</h2><br>
+
+    <div class="container">
+        <ul class="responsive-table">
+            <li class="table-header">
+            <div class="col col-1">ID</div>
+            <div class="col col-2">Nombre</div>
+            <div class="col col-3">Modificar</div>
+            </li>
+        
+            {% for c in entity %}
+                <li class="table-row">
+                    <div class="col col-1" data-label="ID">{{ c.data.0 }}</div>
+                    <div class="col col-2" data-label="Nombre">{{ c.data.1 }}</div>
+                    <div class="col col-3">
+                        <a href="/funcionario/modificar_categoria/{{c.data.0}}" class="btn btn-sm btn-edit" style="float: center;">Editar</a>
+                    </div>
+                
+                </li>
+            {% endfor %}
+    
+        </ul>
+    </div>
+
+
+      <form action="" method="post">
+        {% csrf_token %}
+        <label for="">Ingrese el ID que desee eliminar</label>
+        <input type="number" name="id_categoria" class="form-control" placeholder="ID..." required>
+        <br>
+        <div style="text-align:center">
+          <button type="submit" class="btn btn-primary " value="Eliminar">ELIMINAR</button>
+        </div><br>
+      </form>
+      {{mensaje}}
+
+
+  </div>
+  <div class="col-2">
+
+  </div>
+  <div class="paginator">
+    {% include 'cliente/paginator.html' %}
+  </div>
+</div>
+<br>
+
+<br>
+<br>
+<br>
+
+{% endblock %}

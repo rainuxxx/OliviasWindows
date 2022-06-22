@@ -1,0 +1,70 @@
+{% extends "cliente/base_generica.html" %}
+{%load static%}
+{% block content %}
+<br><br>
+<div class="row">
+  <div class="col-2">
+
+  </div>
+
+
+
+
+  <div class="col-8" style="border:1px solid rgb(245, 118, 161);border-radius: 20px">
+    {% for u in usuario %}
+        {% for c in entity %}
+        
+        <div class="card">
+        <div class="container">
+            {% if c.data.1 == u.data.0 %}  
+                <h3><b>{{u.data.4}}</b></h3>
+                <h5>{{c.data.2}}</h5> 
+                <i>"{{c.data.3}}"</i>
+                {% if request.session.usuario.tipo == 1 or request.session.usuario.tipo == 2 %}
+                    <i>"{{c.data.0}}</i>
+                {% endif %}
+            {% endif %}
+
+
+        </div>
+        </div>
+
+        {% endfor %}
+    {% endfor %}
+
+    {% if request.session.usuario.tipo == 2 or request.session.usuario.tipo == 1 %}
+        <form action="" method="post">
+        {% csrf_token %}
+        <label for="">Ingrese el ID que desee eliminar</label>
+        <input type="number" name="id_blog" class="form-control" placeholder="ID..." required>
+        <br>
+        <div style="text-align:center">
+            <button type="submit" class="btn btn-primary " value="Eliminar">ELIMINAR</button>
+        </div><br>
+        </form>
+    {% endif %}
+    {{mensaje}}
+
+
+  </div>
+  <div class="col-2">
+    
+  </div>
+  <div class="paginator">
+    {% include 'cliente/paginator.html' %}
+  </div>
+</div>
+
+
+
+
+
+
+
+<br>
+
+<br>
+<br>
+<br>
+
+{% endblock %}

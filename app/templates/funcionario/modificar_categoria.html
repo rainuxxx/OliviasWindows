@@ -1,0 +1,41 @@
+{% extends 'cliente/base_generica.html' %}
+{% load static %}
+{% block content %}
+<br>
+
+<br><br>
+<div class="row">
+    <div class="col-4">
+
+    </div>
+    <div class="col-4" style="border:1px solid rgb(245, 118, 161);border-radius: 20px">
+        <div style="text-align:center">
+            <br>
+            <h1>Modificar categoría</h1>  
+        </div><br><br>
+        <div class="registration-form ">
+
+            <form method="post" action="">
+                {% csrf_token %}
+                {% for c in categoria %}
+                <input type="text" class="form-control item" name="nombre_categoria" value="{{ c.data.0 }}">
+        </div><br>
+        {% endfor %}
+      
+        <div class="form-group" style="text-align:center">
+            <button type="submit" class="btn btn-primary create-account">Guardar</button>
+        </div> <br>
+        </form>
+    </div><br><br>
+    {{mensaje}}
+    <div class="col-4">
+
+    </div>
+</div><br><br>
+
+
+</div>
+
+
+
+{%endblock%}

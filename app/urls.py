@@ -1,0 +1,43 @@
+from django.urls import path
+from .views import *
+urlpatterns = [
+#PAGINAS DE CLIENTES
+    path('', index, name='index'),
+    path('iniciar_sesion/', iniciar_sesion, name='iniciar_sesion'),
+    path('registro/', registro, name='registro'),
+    path('cerrar_sesion/', cerrar_sesion, name='cerrar_sesion'),
+    path('producto/',producto, name='producto'),
+    path('producto/cotizacion/<int:id>', cotizacion, name="cotizacion"),
+    path('nuevo_blog/',nuevo_blog, name='nuevo_blog'),
+    path('add-to-cart',addtocart, name="addtocart"),
+    path('update-cart', updatecart, name="updatecart"),
+    path('carrito/delete-cart-item', deletecartitem, name="deletecartitem"),
+    path('mostrar_blog/',mostrar_blog, name='mostrar_blog'),
+    path('recuperar_contrasena/', recuperar_contrasena, name='recuperar_contrasena'),
+    path('cambiar_contrasena/', cambiar_contrasena, name='cambiar_contrasena'),
+    path('carrito/', carrito, name='carrito'),
+    path('contacto/',contacto,name="contacto"),
+    path('compra/',compra, name="compra"),
+    path('placeorder', placeorder, name="placeorder"),
+    path('correo-contacto', correo_contacto, name='correo_contacto'),
+    path('ordenes/',ordenes,name='ordenes'),
+    path('modificar_usuario/',modificar_usuario_pagina,name='modificar_usuario'),
+    path('ordenes/detalle/<int:id_orden>',orden_detalle,name='orden_detalle'),
+    path('lista_producto', lista_productos,name='lista_producto'),
+    path('lista_categoria', lista_categorias,name='lista_producto'),
+    path('lista_usuario_mobile', lista_usuario_mobile,name='lista_usuario_mobile'),
+#PAGINAS DE FUNCIONARIO
+    path('funcionario/', funcionario, name='funcionario'),
+    path('funcionario/nueva_categoria/', nueva_categoria, name='nueva_categoria'),
+    path('funcionario/nuevo_producto/', nuevo_producto, name='nuevo_producto'),
+    path('funcionario/mostrar_categoria/', mostrar_categoria, name='mostrar_categoria'),
+    path('funcionario/mostrar_producto/', mostrar_producto, name='mostrar_producto'),
+    path('funcionario/modificar_categoria/<str:id>', modificar_categoria, name='modificar_categoria'),
+    path('funcionario/modificar_producto/<str:id>', modificar_producto,name="modificar_producto"),
+    path('funcionario/ventas', ventas, name='ventas'),
+    path('funcionario/ventas/detalles/<int:id>', ventas_detalle, name='ventas_detalle'),
+#PAGINA DE ADMINISTRADOR
+    path('administrador/registro_admin/', registro_admin, name='registro_admin'),
+    path('administrador/mostrar_usuario/', mostrar_usuario, name='mostrar_usuario'),
+    path('administrador/modificar_usuario/<str:correo>', modificar_usuario_admin_pagina, name='modificar_usuario_admin'),
+]

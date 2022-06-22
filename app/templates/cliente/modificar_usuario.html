@@ -1,0 +1,76 @@
+{% extends "cliente/base_generica.html" %}
+{% block content %}
+{% load static %}
+
+
+    <br><br><br>
+    <div class="row">
+        <div class="col-4">
+
+        </div><br>
+        <div class="col-4" style="opacity:1.5">
+            <div style="text-align:center">
+                <a href="/"><img src="{% static 'assets/img/logo.png'%}"></a>
+            </div>
+            {% for u in usuario %}
+            <div class="registration-form ">
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="form-icon">
+                        <span><i class="icon icon-user"></i></span>
+
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 text-center mb-5">
+                            <h1 class="heading-section" style="color: #050505">Modificar Datos</h1>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Primer nombre</label>
+                        <input type="text" class="form-control item" name="primer_nombre" value="{{u.data.1}}" required>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="">Segundo nombre</label>
+                        <input type="text" class="form-control item" name="segundo_nombre" value="{{u.data.2}}">
+                    </div><br>
+                    <div class="form-group">
+                        <label for="">Apellido paterno</label>
+                        <input type="text" class="form-control item" name="apellido_paterno" value="{{u.data.3}}" required>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="">Apellido materno</label>
+                        <input type="text" class="form-control item" name="apellido_materno" value="{{u.data.4}}" required>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="">Direccion</label>
+                        <input type="text" class="form-control item" name="direccion" value="{{u.data.5}}" required>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="">Numero de telefono</label>
+                        <input type="number" class="form-control item" name="telefono" value="{{u.data.6}}" required>
+                    </div><br>
+                    <div class="form-group">
+                        <select class="form-control item" name="comuna" required>
+                            <option value="{{u.data.9}}">Comuna</option>
+                            {% for c in comuna %}
+                                <option value="{{c.data.0}}">{{c.data.1}}</option>
+                            {% endfor %}
+                        </select>
+                    </div><br>
+                    <div class="form-group" style="text-align:center">
+                        <button type="submit" class="btn btn-danger create-account">Modificar datos</button>
+                    </div>
+                </form>
+            </div>
+            {% endfor %}
+            {{mensaje}}
+        </div>
+
+    </div>
+    <div class="col-4">
+
+    </div>
+    <br><br><br><br>
+</div>
+
+{% endblock content %}

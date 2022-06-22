@@ -1,0 +1,63 @@
+{% extends "cliente/base_generica.html" %}
+{% block content %}
+
+
+<div class= "py-5">
+    <div class= "container">
+        <div class= "row">
+            <div class= "col-md-12">
+                <div class= "card shadow product_data">
+                    <div class= "card-body">
+                        <div class= "row">
+                            {% load humanize %}
+                            {% for p in producto %}
+                            <div class= "col-md-4">
+                                <img class="card-img-top" style="width: 100%;height: 70%;"src="data:imagen/png;base64, {{p.imagen}}">
+                            </div>
+                            <div class="col-md-8">
+                                <h2 class= "mb-0">
+                                    {{p.data.1}}
+                                </h2>
+                                <h3>{{p.data.3}} Stock disponible</h3>
+                                <hr>
+                                <label class="fw-bold"> Precio : ${{p.data.2 | intcomma}} </label>
+                                <br>
+                                <hr>
+                                {% if p.data.3 > 0 %}
+                                    <label class= "badge bg-success"> En stock </label>
+                                {% else %}
+                                    <label class= "badge bg-danger"> Fuera de stock </label>
+                                {% endif %}
+                                <div class= "row mt-2">
+                                    <div class= "col-md-3">
+                                        {% csrf_token %}
+                                        <input type="hidden" value="{{p.data.0}}" class="prod_id">
+                                        <label for="Quantity"> Stock</label>
+                                        <div class= "input-group text-center mb-3" style="width:130px;">
+                                            <button class="input-group-text decrement-btn">-</button>
+                                            <input type="text" name="quantity" class="form-control qty-input text-center" value="1">
+                                            <button class="input-group-text increment-btn">+</button>
+                                        </div>
+                                    </div>
+                                    <div  class="col-md-9">
+                                        <br/>
+                                        {% if p.data.3 > 0 %}
+                                            <button type="button" class=" btn btn-primary me-3 float-start addToCartBtn">Añadir al carro </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+   
+{% endblock content %}

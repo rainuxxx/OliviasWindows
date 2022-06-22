@@ -1,0 +1,66 @@
+{% extends 'cliente/base_generica.html' %}
+{% load static %}
+{% block content %}
+    <br>
+   
+    <br><br>
+    <div class="row">
+        <div class="col-1">
+
+        </div>
+        <div class="col-10" style="border:1px solid rgb(245, 118, 161);border-radius: 20px">
+            <H2>Modificar producto</H2>
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for p in producto %}
+                    <div class="form-group">
+                        <label for="">Nombre del producto</label>
+                        <input type="text" class="form-control item" name="nombre_producto" value="{{p.data.1}}" placeholder="Nombre del producto..."required>   
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="">Precio</label>
+                        <input type="number" class="form-control item" name="precio" value="{{p.data.2}}"placeholder="Precio del producto..." required>   
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="">Codigo de barra</label>
+                        <input type="number" class="form-control item" name="sku" value="{{p.data.6}}"placeholder="Precio del producto..." required>   
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="">Cantidad de stock</label>
+                        <input type="number" class="form-control item" name="stock" value="{{p.data.3}}" placeholder="Stock del producto..." required>   
+                    </div>
+                    <br>
+                    <select name="categoria" class="form-control item">
+                        <option value="">Categoría actual --> {{p.data.4}}</option>
+                        {% for c in categoria %}
+                            <option value="{{ c.data.0 }}">{{ c.data.1 }} </option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <label for="">Estado del producto</label>
+                    <select name="estado" class="form-control item">
+                        <option value="0">Deshabilitado</option>
+                        <option value="1">Habilitado</option>
+                    </select>
+                    <br>
+                    <label for="">Imagen</label>
+                    <input type="file" name="imagen" required>
+                {% endfor %}    
+                <br><br><br>
+                <div style="text-align:center">
+                    <input type="submit" class="btn btn-primary" value="Modificar Producto">
+                </div><br>
+                
+            </form>
+            {{mensaje}}
+        </div>
+        <div class="col-1">
+            
+        </div>
+    </div><br><br><br>
+    
+
+    {%endblock%}
