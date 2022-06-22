@@ -3,7 +3,7 @@
 {% block content %}
 {%load static%}
 
-<br><br>
+<br><br><br>
 
 
 <div class="row">
@@ -19,11 +19,13 @@
                 <input class="form-control" type="text" name="titulo" placeholder="Ingresa el nombre del producto">
             </div>
             <br>
+            <hr>
             <br>
             <div class="form-group">
                 <label class="pay" for="">Cuerpo</label>
                 <input class="form-control" type="text" name="cuerpo" placeholder="Ingresa el nombre del producto">
             </div>
+            
             <div hidden class="form-group">
                 <input class="form-control" type="number" name="usuario" value="{{ request.session.usuario.id }}">
             </div>
@@ -41,6 +43,8 @@
 
     </div>
 </div>
+
+<br><br>
 
 
 
